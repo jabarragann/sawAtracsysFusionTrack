@@ -18,12 +18,12 @@ set (REQUIRED_CISST_LIBRARIES
      cisstMultiTaskQt
      cisstParameterTypes
      cisstParameterTypesQt
-     cisstQt)
+     )
 
 # cisst
 find_package (cisst REQUIRED ${REQUIRED_CISST_LIBRARIES})
 
-if (cisst_FOUND_AS_REQUIRED)
+if (cisst_FOUND)
 
   # cisst
   include (${CISST_USE_FILE})
@@ -43,8 +43,8 @@ if (cisst_FOUND_AS_REQUIRED)
                mtsAtracsysFusionTrackStrayMarkersQtWidget.cpp
                ${SAW_ATRACSYS_FUSION_TRACK_QT_WRAP_CPP})
   set_property (TARGET sawAtracsysFusionTrackQt PROPERTY FOLDER "sawAtracsysFusionTrack")
-  cisst_target_link_libraries (sawAtracsysFusionTrackQt ${REQUIRED_CISST_LIBRARIES})
+  target_link_libraries (sawAtracsysFusionTrackQt ${cisst_LIBRARIES})
 
-else (cisst_FOUND_AS_REQUIRED)
+else (cisst_FOUND)
   message ("Information: code will not be compiled, it requires ${REQUIRED_CISST_LIBRARIES}")
-endif (cisst_FOUND_AS_REQUIRED)
+endif (cisst_FOUND)
